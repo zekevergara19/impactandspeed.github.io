@@ -13,10 +13,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Maserati:wght@700&display=swap">
   <link rel="stylesheet" href="style.css">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <link rel="icon" href="/images/Velocity Favicon.ico" type="image/x-icon">
 </head>
-
 <body>
   <!--Nav Bar-->
 
@@ -149,6 +149,7 @@
             </ul>
           </div>
         </div>
+      
 
 
       </div>
@@ -282,8 +283,9 @@
   </section>
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-md-6" <form
-          action="https://script.google.com/macros/s/AKfycbzb1w0D4Sm-iAlb244NNop2imv0WOIguYIoJ5ajYZEAGLb-yMefTBN8hYgUXmLUSEzn/exec"
+        <div class="col-md-6">
+          <form id="demo-form"
+          action="/sumbit"
           method="post">
           <div class="form-group">
             <label for="fullName">Full Name:</label>
@@ -309,17 +311,27 @@
             <label for="contactInfo">Contact Info:</label>
             <input type="tel" class="form-control" id="telephone" name="telephone" required>
           </div>
-          <button type="submit" class="btn">Submit</button>
-          </form>
+          <div class="g-recaptcha" data-sitekey="6LdHmWQpAAAAACGUoxY-8-ZQSBPvtgot0YQJYdtv"></div>
+
+          <button type="button" onclick="submitForm()">Submit</button>
         </div>
       </div>
     </div>
+<script>
+  function submitForm() {
+    const recaptchaResponse = grecaptcha.getResponse();
 
+    if (recaptchaResponse === '') {
+      alert('Please complete the reCAPTCHA verification.');
+    } else {
+      // Perform any additional client-side validation if needed
+      // Then, proceed with form submission
+      document.getElementById("demo-form").submit();
+    }
+  }
+</script>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
-  
 </body>
-
 </html>
